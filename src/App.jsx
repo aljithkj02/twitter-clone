@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import './App.css'
+import MyRoutes from './Routes/MyRoutes'
 
 function App() {
 
   return (
     <div className="App">
-      Twitter
+      <MyRoutes />
     </div>
   )
 }

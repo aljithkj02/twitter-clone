@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { getTweets, isLoading, loginUser } from "../Redux/action/action";
+import { getMyTweets, getTweets, handleDeleteTweet, handleNewTweet, isLoading, loginUser } from "../Redux/action/action";
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -7,10 +7,22 @@ export const useActions = () => {
     const handleLoading = (status) => {
         dispatch(isLoading(status));
     }
+
+
+    const addTweet = (obj) => {
+        dispatch(handleNewTweet(obj));
+    }
+
+    const deleteTweetHandler = (tweetId, username, password) => {
+        dispatch(handleDeleteTweet(tweetId, handleLoading, username, password))
+    }
     return {
         loginUser,
         dispatch,
         getTweets,
-        handleLoading
+        handleLoading,
+        addTweet,
+        getMyTweets,
+        deleteTweetHandler
     }
 }

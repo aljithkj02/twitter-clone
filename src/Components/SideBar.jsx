@@ -10,14 +10,14 @@ const SideBar = () => {
         >
             <Box display="flex" flexDir="column" gap={4}>
                 <Link to="/">
-                    <Text fontSize="1.5rem" fontWeight="500">Home</Text>
+                    <Text fontSize="1.4rem" fontWeight="500">Home</Text>
                 </Link>
-                <Link to="/">
-                    <Text fontSize="1.5rem" fontWeight="500">My Tweets</Text>
+                <Link to="/mytweets">
+                    <Text fontSize="1.4rem" fontWeight="500">My Tweets</Text>
                 </Link>
             </Box>
             <Box>
-                <Text fontSize="1.5rem" fontWeight="500"
+                <Text fontSize="1.4rem" fontWeight="500"
                     cursor="pointer"
                 >Logout</Text>
             </Box>

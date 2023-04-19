@@ -7,6 +7,7 @@ import SideBar from '../Components/SideBar'
 import { useData } from '../Hooks/useData'
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
+import MyTweets from '../Pages/MyTweets'
 
 const Layout = () => {
     return (
@@ -34,7 +35,7 @@ const MyRoutes = () => {
             <Routes>
                 <Route path='/' element={<Layout />}>
                     <Route path='' element={<Home />} />
-                    <Route path='mytweets' element={<h1>My Tweets</h1>} />
+                    <Route path='mytweets' element={<MyTweets />} />
                 </Route>
                 <Route path='/login' element={<Login />} />
             </Routes>

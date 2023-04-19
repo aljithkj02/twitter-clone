@@ -13,7 +13,6 @@ const Home = () => {
         if (tweets.length == 0) {
             getData();
         }
-        console.log(tweets);
     }, [])
 
     const getData = async () => {

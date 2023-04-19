@@ -8,10 +8,21 @@ const apiClient = axios.create({
         'Content-Type': 'application/json'
     }
 })
-
+// ajithk
+// Ajith$789
 export const login = async ({ username, password }) => {
-    const response = await apiClient.post('/auth/login', { username, password });
-    return response.data;
+    try {
+        const response = await apiClient.post('/auth/login', { username, password });
+        return {
+            success: true,
+            message: 'User loggedin successfully!'
+        }
+    } catch (err) {
+        return {
+            success: false,
+            message: err.response.data.message
+        }
+    }
 }
 
 export const getAllPost = async () => {

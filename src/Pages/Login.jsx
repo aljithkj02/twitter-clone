@@ -1,5 +1,7 @@
-import { Box, Button, Heading, Input, InputGroup, InputRightElement, Stack } from '@chakra-ui/react';
+import { Box, Button, Heading, Input, InputGroup, InputRightElement, Stack, useToast } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useActions } from '../Hooks/useActions';
 import { login } from '../config';
 
 const Login = () => {
@@ -8,6 +10,9 @@ const Login = () => {
         username: '',
         password: ''
     })
+    const toast = useToast();
+    const navigate = useNavigate();
+    const { dispatch, isLoading, loginUser } = useActions();
 
     const handleChange = (e) => {
         setData({
@@ -16,10 +21,28 @@ const Login = () => {
         })
     }
 
-    const loginUser = async (e) => {
+    const loginHandler = async (e) => {
         e.preventDefault();
+        dispatch(isLoading(true));
         const res = await login(data);
-        console.log(res);
+        if (res.success) {
+            toast({
+                title: res.message,
+                status: 'success',
+                isClosable: true,
+                position: 'top'
+            })
+            loginUser(dispatch(loginUser({ ...data })));
+            navigate('/');
+        } else {
+            toast({
+                title: res.message,
+                status: 'error',
+                isClosable: true,
+                position: 'top'
+            });
+        }
+        dispatch(isLoading(false));
     }
     const handleClick = () => setShow(!show);
     return (
@@ -28,7 +51,7 @@ const Login = () => {
                 m="auto" borderRadius={8}
             >
                 <Heading textAlign="center">Login</Heading>
-                <form onSubmit={loginUser}>
+                <form onSubmit={loginHandler}>
                     <Stack spacing={5} mt={6}>
                         <Input variant='filled' placeholder='Enter username' required={true}
                             name="username" onChange={handleChange} value={data.username}

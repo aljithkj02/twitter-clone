@@ -1,8 +1,10 @@
 import { Box, Container } from '@chakra-ui/react'
 import React from 'react'
 import { Outlet, Route, Routes } from 'react-router-dom'
+import Loader from '../Components/Loader'
 import Navbar from '../Components/Navbar'
 import SideBar from '../Components/SideBar'
+import { useData } from '../Hooks/useData'
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
 
@@ -23,8 +25,10 @@ const Layout = () => {
 }
 
 const MyRoutes = () => {
+    const { isLoading } = useData();
     return (
         <Box>
+            {isLoading && <Loader />}
             <Routes>
                 <Route path='/' element={<Layout />}>
                     <Route path='' element={<Home />} />

@@ -1,11 +1,16 @@
 import { useDispatch } from "react-redux";
-import { isLoading, loginUser } from "../Redux/action/action";
+import { getTweets, isLoading, loginUser } from "../Redux/action/action";
 
 export const useActions = () => {
     const dispatch = useDispatch();
+
+    const handleLoading = (status) => {
+        dispatch(isLoading(status));
+    }
     return {
         loginUser,
-        isLoading,
-        dispatch
+        dispatch,
+        getTweets,
+        handleLoading
     }
 }

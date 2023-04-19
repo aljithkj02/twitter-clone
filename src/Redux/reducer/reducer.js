@@ -21,6 +21,11 @@ const myReducer = (state = defaultData, action) => {
                 ...state,
                 isLoading: action.payload
             }
+        case 'STORE_TWEETS':
+            return {
+                ...state,
+                tweets: action.payload
+            }
 
         default:
             return state;

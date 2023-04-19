@@ -1,4 +1,6 @@
+import { useRadio } from "@chakra-ui/react";
 import axios from "axios";
+import { useData } from "./Hooks/useData";
 
 const BASE_URL = 'http://172.105.58.224:3582';
 
@@ -20,14 +22,33 @@ export const login = async ({ username, password }) => {
     } catch (err) {
         return {
             success: false,
-            message: err.response.data.message
+            message: err.response.data.message,
         }
     }
 }
 
-export const getAllPost = async () => {
-    const response = await apiClient.get('/tweet/all');
-    return response.data;
+export const getAllPost = async (username, password) => {
+    try {
+        const authString = 'ajithk' + ':' + 'Ajith$789';
+        // const authString = username + ':' + password;
+        const encodedAuthString = btoa(unescape(encodeURIComponent(authString)));
+        const authHeader = 'Basic ' + encodedAuthString;
+        const response = await axios.get('http://172.105.58.224:3582/tweet/all', {
+            headers: {
+                'Authorization': authHeader
+            }
+        });
+        return {
+            success: true,
+            message: 'Data fetched successfully!',
+            data: response.data
+        }
+    } catch (err) {
+        return {
+            success: false,
+            message: err.response.data
+        }
+    }
 }
 
 export const createNewTweet = async (content) => {

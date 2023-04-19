@@ -12,7 +12,7 @@ const Login = () => {
     })
     const toast = useToast();
     const navigate = useNavigate();
-    const { dispatch, isLoading, loginUser } = useActions();
+    const { dispatch, handleLoading, loginUser } = useActions();
 
     const handleChange = (e) => {
         setData({
@@ -23,7 +23,7 @@ const Login = () => {
 
     const loginHandler = async (e) => {
         e.preventDefault();
-        dispatch(isLoading(true));
+        handleLoading(true);
         const res = await login(data);
         if (res.success) {
             toast({
@@ -42,7 +42,7 @@ const Login = () => {
                 position: 'top'
             });
         }
-        dispatch(isLoading(false));
+        handleLoading(false);
     }
     const handleClick = () => setShow(!show);
     return (

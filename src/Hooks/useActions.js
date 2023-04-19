@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { getMyTweets, getTweets, handleDeleteTweet, handleNewTweet, isLoading, loginUser } from "../Redux/action/action";
+import {
+    getMyTweets, getTweets, handleDeleteTweet, handleNewTweet, isLoading, loginUser,
+    logoutUser
+} from "../Redux/action/action";
 
 export const useActions = () => {
     const dispatch = useDispatch();
@@ -14,7 +17,15 @@ export const useActions = () => {
     }
 
     const deleteTweetHandler = (tweetId, username, password) => {
-        dispatch(handleDeleteTweet(tweetId, handleLoading, username, password))
+        dispatch(handleDeleteTweet(tweetId, handleLoading, username, password));
+        return {
+            success: true,
+            message: 'Tweet deleted Successfully'
+        }
+    }
+
+    const logoutHandler = () => {
+        dispatch(logoutUser());
     }
     return {
         loginUser,
@@ -23,6 +34,7 @@ export const useActions = () => {
         handleLoading,
         addTweet,
         getMyTweets,
-        deleteTweetHandler
+        deleteTweetHandler,
+        logoutHandler
     }
 }

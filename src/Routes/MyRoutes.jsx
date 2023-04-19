@@ -8,6 +8,7 @@ import { useData } from '../Hooks/useData'
 import Home from '../Pages/Home'
 import Login from '../Pages/Login'
 import MyTweets from '../Pages/MyTweets'
+import PrivateRouter from './PrivateRouter'
 
 const Layout = () => {
     return (
@@ -33,7 +34,7 @@ const MyRoutes = () => {
         <Box>
             {isLoading && <Loader />}
             <Routes>
-                <Route path='/' element={<Layout />}>
+                <Route path='/' element={<PrivateRouter><Layout /></PrivateRouter>}>
                     <Route path='' element={<Home />} />
                     <Route path='mytweets' element={<MyTweets />} />
                 </Route>

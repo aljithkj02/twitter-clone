@@ -4,6 +4,6 @@ import myReducer from "./reducer/reducer";
 
 const store = legacy_createStore(myReducer, applyMiddleware(thunk));
 
-store.subscribe(() => console.log(store.getState()));
+// store.subscribe(() => console.log(store.getState()));
 
 export default store;

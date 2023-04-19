@@ -1,4 +1,4 @@
-import { isLoading } from "../action/action"
+
 
 const defaultData = {
     username: '',
@@ -16,7 +16,8 @@ const myReducer = (state = defaultData, action) => {
                 ...state,
                 username: action.payload.username,
                 password: action.payload.password,
-                isLoading: false
+                isLoading: false,
+                isUser: true
             }
         case 'LOADING_STATUS':
             return {
@@ -45,6 +46,15 @@ const myReducer = (state = defaultData, action) => {
                 isLoading: false,
                 tweets: state.tweets.filter((ele) => ele.id != action.payload),
                 myTweets: state.myTweets.filter((ele) => ele.id != action.payload)
+            }
+        case 'LOGOUT':
+            return {
+                ...state,
+                tweets: [],
+                myTweets: [],
+                username: '',
+                password: '',
+                isUser: false
             }
 
         default:

@@ -8,6 +8,12 @@ export const loginUser = (data) => (dispatch) => {
     })
 }
 
+export const logoutUser = () => (dispatch) => {
+    return dispatch({
+        type: 'LOGOUT'
+    })
+}
+
 export const isLoading = (status) => (dispatch) => {
     return dispatch({
         type: 'LOADING_STATUS',

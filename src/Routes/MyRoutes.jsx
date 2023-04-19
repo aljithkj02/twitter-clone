@@ -6,8 +6,10 @@ import Navbar from '../Components/Navbar'
 import SideBar from '../Components/SideBar'
 import { useData } from '../Hooks/useData'
 import Home from '../Pages/Home'
+import IndividualPage from '../Pages/IndividualPage'
 import Login from '../Pages/Login'
 import MyTweets from '../Pages/MyTweets'
+import NotFound from '../Pages/NotFound'
 import PrivateRouter from './PrivateRouter'
 
 const Layout = () => {
@@ -39,6 +41,8 @@ const MyRoutes = () => {
                     <Route path='mytweets' element={<MyTweets />} />
                 </Route>
                 <Route path='/login' element={<Login />} />
+                <Route path='/tweet/:id' element={<IndividualPage />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </Box>
     )

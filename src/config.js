@@ -9,8 +9,6 @@ const apiClient = axios.create({
         'Content-Type': 'application/json'
     }
 })
-// ajithk
-// Ajith$789
 
 const generateHeader = (username, password) => {
     const authString = username + ':' + password;
@@ -120,7 +118,23 @@ export const deleteTweet = async (tweetId, username, password) => {
     }
 };
 
-export const getTweetDetails = async (tweetId) => {
-    const response = await apiClient.get(`/tweet/${tweetId}`);
-    return response.data;
+export const getTweetDetails = async (tweetId, username, password) => {
+    try {
+        const authHeader = generateHeader(username, password);
+        const response = await apiClient.get(`/tweet/${tweetId}`, {
+            headers: {
+                'Authorization': authHeader
+            }
+        });
+        return {
+            success: true,
+            message: 'Data fetched successfully!',
+            data: response.data
+        }
+    } catch (err) {
+        return {
+            success: false,
+            message: err.response.data,
+        }
+    }
 };

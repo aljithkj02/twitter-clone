@@ -1,4 +1,4 @@
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Box, Button, Text, useDisclosure } from '@chakra-ui/react';
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Box, Button, Image, Text, useDisclosure } from '@chakra-ui/react';
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useActions } from '../Hooks/useActions';
@@ -19,7 +19,11 @@ const Navbar = () => {
                         bgColor="black" color="white" px={10} py={5}
                     >
                         <Box>
-                            <Link to="/"><Text>Twitter</Text></Link>
+                            <Link to="/">
+                                <Image src='https://th.bing.com/th?id=OIP.H836RvDYYgQZcZn0TC8qBAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2' alt="logo"
+                                    w={8} borderRadius={50}
+                                />
+                            </Link>
                         </Box>
                         <Box display="flex" gap={5}>
                             <Link to="/mytweets"><Text cursor="pointer">My Tweets</Text></Link>

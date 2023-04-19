@@ -1,15 +1,22 @@
 import { Box, Button, Image, Text } from '@chakra-ui/react'
 import moment from 'moment'
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const IndividualTweet = ({ tweet, author, createdAt, handleDelete, id }) => {
-    const deletePost = () => {
+    const deletePost = (e) => {
+        e.stopPropagation();
         handleDelete(id);
+    }
+    const navigate = useNavigate();
+    const tweetHandler = () => {
+        navigate(`/tweet/${id}`);
     }
     return (
         <Box m={4} boxShadow="rgba(0, 0, 0, 0.2) 0px 5px 10px" p={6}
             borderRadius={6} cursor="pointer" transition=".2s ease" bg="#C7E7F6"
             _hover={{ boxShadow: "rgba(0, 0, 0, 0.4) 0px 5px 15px" }}
+            onClick={tweetHandler}
         >
             <Box display="flex" alignItems="center" justifyContent="space-between">
                 <Box display="flex" alignItems="center" gap={3}>

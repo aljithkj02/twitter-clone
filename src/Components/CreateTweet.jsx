@@ -19,7 +19,6 @@ const CreateTweet = () => {
         e.preventDefault();
         handleLoading(true);
         const res = await createNewTweet(tweet, username, password);
-        console.log(res);
         if (res.success) {
             toast({
                 title: res.message,

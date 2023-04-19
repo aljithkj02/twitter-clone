@@ -1,5 +1,6 @@
 import { Box, Button, Heading, Input, InputGroup, InputRightElement, Stack } from '@chakra-ui/react';
 import React, { useState } from 'react';
+import { login } from '../config';
 
 const Login = () => {
     const [show, setShow] = useState(false);
@@ -15,18 +16,19 @@ const Login = () => {
         })
     }
 
-    const login = (e) => {
+    const loginUser = async (e) => {
         e.preventDefault();
-        console.log(data);
+        const res = await login(data);
+        console.log(res);
     }
     const handleClick = () => setShow(!show);
     return (
         <Box display="flex" alignItems="center" minH="100vh">
-            <Box w="40%" boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px" px={8} py={16}
+            <Box w={["95%", "90%", "60%", "40%"]} boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px" px={8} py={16}
                 m="auto" borderRadius={8}
             >
                 <Heading textAlign="center">Login</Heading>
-                <form onSubmit={login}>
+                <form onSubmit={loginUser}>
                     <Stack spacing={5} mt={6}>
                         <Input variant='filled' placeholder='Enter username' required={true}
                             name="username" onChange={handleChange} value={data.username}

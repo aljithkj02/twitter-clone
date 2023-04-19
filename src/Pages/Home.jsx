@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import CreateTweet from '../Components/CreateTweet';
+import IndividualTweet from '../Components/IndividualTweet';
 import { useActions } from '../Hooks/useActions';
 import { useData } from '../Hooks/useData';
 
@@ -19,14 +20,12 @@ const Home = () => {
         dispatch(getTweets(username, password, handleLoading));
     }
     return (
-        <Box>
+        <Box w="full">
             <CreateTweet />
-            {
-                tweets.map((ele) => {
-                    return <h1>{ele.tweet}</h1>
-                })
-            }
-            Home
+
+            {tweets.map((ele) => {
+                return <IndividualTweet key={ele.id} {...ele} />
+            })}
         </Box>
 
     )

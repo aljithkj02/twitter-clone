@@ -13,10 +13,12 @@ const Layout = () => {
         <Box>
             <Navbar />
             <Container maxW="95%" minH="90vh" display={["block", "block", "grid"]}
-                gridTemplateColumns="1fr 3fr"
+                pt={14}
             >
                 <SideBar />
-                <Box px={8} py={6} borderLeft={["none", "none", "1px solid black"]}>
+                <Box px={[0, 2, 4, 8]} py={[2, 6]} borderLeft={["none", "none", "1px solid black"]}
+                    ml={["0px", "0px", "200px"]}
+                >
                     <Outlet />
                 </Box>
             </Container>

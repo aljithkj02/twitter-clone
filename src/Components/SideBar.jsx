@@ -6,7 +6,7 @@ const SideBar = () => {
     return (
         <Box display={['none', 'none', 'flex']}
             flexDir="column" justifyContent="space-between"
-            py={6}
+            py={6} position="fixed" h="90vh"
         >
             <Box display="flex" flexDir="column" gap={4}>
                 <Link to="/">
